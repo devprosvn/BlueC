@@ -60,6 +60,24 @@ img {
   transform: translateY(-4px);
 }
 
+.btn-secondary {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid #70f8ff;
+  color: #70f8ff;
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+  background: #70f8ff;
+  color: #0d111b;
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
