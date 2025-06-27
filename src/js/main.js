@@ -48,4 +48,36 @@ form.addEventListener('submit', async (e) => {
   } catch (error) {
     statusText.textContent = 'Mạng lỗi. Vui lòng thử lại.';
   }
-}); 
+});
+
+// Team slider navigation
+const teamSlider = document.getElementById('team-slider');
+const teamPrev = document.getElementById('team-prev');
+const teamNext = document.getElementById('team-next');
+
+function slideTeam(direction){
+  const cardWidth = 240;
+  if(direction>0){
+    // Slide left -> show next card
+    teamSlider.scrollBy({left: cardWidth, behavior:'smooth'});
+    setTimeout(()=>{
+      // move first card to end
+      const first = teamSlider.firstElementChild;
+      if(first){
+        teamSlider.appendChild(first);
+        teamSlider.scrollLeft -= cardWidth;
+      }
+    },400);
+  }else{
+    // Slide right -> show previous card
+    const last = teamSlider.lastElementChild;
+    if(last){
+      teamSlider.scrollLeft += cardWidth;
+      teamSlider.prepend(last);
+    }
+    teamSlider.scrollBy({left: -cardWidth, behavior:'smooth'});
+  }
+}
+
+teamPrev && teamPrev.addEventListener('click', ()=> slideTeam(-1));
+teamNext && teamNext.addEventListener('click', ()=> slideTeam(1)); 
